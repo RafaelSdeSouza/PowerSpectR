@@ -34,4 +34,23 @@ The package is inspired by techniques used in modern astronomical image analysis
 if (!requireNamespace("remotes")) install.packages("remotes")
 remotes::install_github("RafaelSdeSouza/PowerSpectR")
 
+```r
+library(PowerSpectR)
+
+# Example: compute and plot a power spectrum from an image file
+result <- ps_run("example_image.png",
+                 window = "hann",
+                 nbins = 72,
+                 binning = "log",
+                 reducer = "median",
+                 drop_bins = 1)
+
+# Access slope and profile
+result$slope
+head(result$profile)
+
+# Standalone plot (with optional inset)
+plot_power_spectrum(result, inset_path = "example_image.png")
+
+
 
