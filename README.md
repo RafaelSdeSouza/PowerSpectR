@@ -1,4 +1,4 @@
-# PowerSpectR <img src="man/figures/logo.png" align="right" width="120"/>
+# PowerSpectR <img src="man/figures/logo_ps.png" align="right" width="120"/>
 
 **Author:** Rafael S. de Souza  
 **Email:** [rd23aag@herts.ac.uk](mailto:rd23aag@herts.ac.uk)  
