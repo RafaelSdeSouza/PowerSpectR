@@ -1,0 +1,38 @@
+Package: PowerSpectR
+Type: Package
+Title: Robust Median-Based Power Spectrum Analysis for Images
+Version: 0.1.0
+Authors@R: c(
+    person(
+      given = "Rafael S.",
+      family = "de Souza",
+      email = "rd23aag@herts.ac.uk",
+      role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0001-7207-4584")
+    )
+  )
+Description: 
+    Tools for computing and visualizing robust, azimuthally medianized 
+    Fourier power spectra from 2-D images. The package supports log- or 
+    linearly spaced k-space binning, multiple window functions, and 
+    reproducible slope fitting for scale-free structures, suitable for 
+    both astronomical and remote-sensing image analysis.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 4.2)
+Imports:
+    imager,
+    dplyr,
+    ggplot2,
+    tibble,
+    cowplot,
+    scales
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
