@@ -7,7 +7,7 @@
 read_gray_matrix(path)
 }
 \arguments{
-\item{path}{Path to an image file readable by {imager}}
+\item{path}{Path to an image file readable by \pkg{imager}}
 }
 \value{
 numeric matrix

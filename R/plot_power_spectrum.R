@@ -43,7 +43,9 @@ plot_power_spectrum <- function(ps_obj, inset_path = NULL, show_fit = TRUE) {
   }
 
   # Optional inset image
-  if (!is.null(inset_path) && requireNamespace("cowplot", quietly = TRUE)) {
+  if (!is.null(inset_path) &&
+      requireNamespace("cowplot", quietly = TRUE) &&
+      requireNamespace("magick", quietly = TRUE)) {
     p_final <- cowplot::ggdraw() +
       cowplot::draw_plot(p) +
       cowplot::draw_image(inset_path,
@@ -52,6 +54,15 @@ plot_power_spectrum <- function(ps_obj, inset_path = NULL, show_fit = TRUE) {
     print(p_final)
     invisible(p_final)
   } else {
+    if (!is.null(inset_path) &&
+        (!requireNamespace("cowplot", quietly = TRUE) ||
+         !requireNamespace("magick", quietly = TRUE))) {
+      warning(
+        "Inset rendering requires both 'cowplot' and 'magick'; returning the base plot instead.",
+        call. = FALSE
+      )
+    }
+
     print(p)
     invisible(p)
   }

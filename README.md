@@ -4,14 +4,7 @@ Robust, median-based Fourier power-spectrum analysis for 2-D images in R.
 
 ## Website
 
-The repository now includes a Quarto website in the same visual family as
-`sagui`. Render it locally with:
-
-```r
-quarto::quarto_render()
-```
-
-or from the shell with `quarto render`.
+[PowerSpectR documentation](https://rafaelsdesouza.github.io/PowerSpectR/)
 
 ## Overview
 
@@ -60,7 +53,7 @@ res <- global_psd(
 res$slope
 head(res$data)
 
-plot_power_spectrum(res, inset_path = img_path)
+plot_power_spectrum(res)
 ```
 
 ## Core Functions
@@ -71,5 +64,3 @@ plot_power_spectrum(res, inset_path = img_path)
 - `radial_stats_median()` computes the azimuthal median in radial bins.
 - `global_psd()` runs the full power-spectrum workflow and slope fit.
 - `plot_power_spectrum()` visualizes the fitted profile.
-
-

@@ -4,7 +4,7 @@
 \alias{hann2d}
 \title{2-D window generator (Hann/Blackman/none)}
 \usage{
-hann2d(h, w)
+hann2d(h, w, window = c("hann", "blackman", "none"))
 }
 \arguments{
 \item{h}{Height (rows)}

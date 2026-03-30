@@ -2,36 +2,47 @@
 % Please edit documentation in R/global_psd.R
 \name{global_psd}
 \alias{global_psd}
-\title{Compute a global medianized radial power spectrum from an image}
+\title{Compute a global radial power spectrum from an image}
 \usage{
-global_psd(img_path, nbins = 72, drop_bins = 1)
+global_psd(
+  img_path,
+  nbins = 72,
+  drop_bins = 1,
+  window = c("hann", "blackman", "none"),
+  quiet = FALSE
+)
 }
 \arguments{
-\item{img_path}{Character. Path to the image file readable by \pkg{imager}.}
+\item{img_path}{Character. Path to an image file readable by \pkg{imager}.}
 
-\item{nbins}{Integer. Number of radial bins (passed to \code{radial_stats_median()}).}
+\item{nbins}{Integer. Number of radial bins passed to
+\code{\link[=radial_stats_median]{radial_stats_median()}}.}
 
-\item{drop_bins}{Integer. Number of lowest-frequency bins to drop before fitting.}
+\item{drop_bins}{Integer. Number of lowest-frequency bins to drop before
+fitting.}
+
+\item{window}{Character. One of \code{"hann"}, \code{"blackman"}, or \code{"none"}.}
+
+\item{quiet}{Logical. If \code{FALSE}, report the fitted slope.}
 }
 \value{
 A list containing:
 \describe{
-\item{data}{Tibble of radial frequencies and median power values.}
+\item{data}{A tibble of radial frequencies and median power values.}
 \item{alpha}{Intercept of the fitted power law in natural log space.}
-\item{slope}{Slope (\eqn{\beta}) of the power-law fit.}
+\item{slope}{Slope (\eqn{\beta}) of the fitted power law.}
 \item{file}{Basename of the input image.}
+\item{window}{The window that was applied before the FFT.}
 }
 }
 \description{
-Reads an image, converts it to grayscale, applies a 2-D Hann window,
-performs a Fourier transform, and computes the azimuthal median
-of the power spectrum. A simple power-law fit
-\eqn{\log P = \alpha + \beta \log k} is then estimated.
+Reads an image, converts it to grayscale, applies a 2-D window,
+performs a Fourier transform, computes the azimuthal median of the
+power spectrum, and fits a power law of the form
+\eqn{\log P = \alpha + \beta \log k}.
 }
 \examples{
-\dontrun{
-img_path <- system.file("extdata", "example.png", package = "yourpkg")
-res <- global_psd(img_path)
+img_path <- system.file("extdata", "example_texture.png", package = "PowerSpectR")
+res <- global_psd(img_path, nbins = 48, drop_bins = 2, window = "hann", quiet = TRUE)
 str(res)
-}
 }

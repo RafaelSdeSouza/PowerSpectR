@@ -28,13 +28,11 @@ Depends: R (>= 4.2)
 Imports:
     imager,
     ggplot2,
-    tibble,
-    cowplot
+    tibble
 Suggests:
-    knitr,
-    rmarkdown,
+    cowplot,
+    magick,
     testthat (>= 3.0.0)
-VignetteBuilder: knitr
 Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
