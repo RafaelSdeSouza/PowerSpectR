@@ -9,9 +9,7 @@ Robust, median-based Fourier power-spectrum analysis for 2-D images in R.
 ## Overview
 
 **PowerSpectR** computes azimuthally medianized 1-D power spectra from 2-D
-images, then fits a power-law slope on log-log axes. The focus is a clean,
-reproducible workflow that is more robust to bright outliers, masking
-artifacts, and localized structure than a simple azimuthal mean.
+images, then fits a power-law slope on log-log axes. 
 
 Current package capabilities include:
 
