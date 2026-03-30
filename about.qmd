@@ -1,0 +1,40 @@
+## About PowerSpectR
+
+**PowerSpectR** is a lightweight R package for estimating radial power spectra
+from 2-D images with a median-based summary in Fourier space.
+
+The current implementation is intentionally compact:
+
+- images are loaded with `imager`
+- tapering is handled with `hann2d()`
+- the centered 2-D power image is reduced with `radial_stats_median()`
+- `global_psd()` fits a simple log-log slope
+- `plot_power_spectrum()` renders the result
+
+## Method Summary
+
+The package follows a straightforward analysis path:
+
+1. Convert the image to grayscale.
+2. Remove the DC component by subtracting the mean.
+3. Apply a 2-D taper to soften edge discontinuities before the FFT.
+4. Compute the squared Fourier amplitude.
+5. FFT-shift the power image into a centered frame.
+6. Collapse annuli with the median to get a robust radial profile.
+7. Fit a power law after dropping the lowest-frequency bins if needed.
+
+## Notes
+
+PowerSpectR currently assumes:
+
+- 2-D image inputs
+- radial bins that are linearly spaced in pixel radius
+- a simple linear fit in log space for the slope estimate
+
+That makes it especially useful as a compact exploratory tool or a reproducible
+starting point before moving to a more elaborate spectral pipeline.
+
+## Contact
+
+Rafael S. de Souza  
+[rd23aag@herts.ac.uk](mailto:rd23aag@herts.ac.uk)
