@@ -39,14 +39,14 @@ library(PowerSpectR)
 
 img_path <- system.file(
   "extdata",
-  "example_galaxy.png",
+  "example_jwst_ngc628.png",
   package = "PowerSpectR"
 )
 
 res <- global_psd(
   img_path,
-  nbins = 24,
-  drop_bins = 1,
+  nbins = 48,
+  drop_bins = 2,
   window = "hann"
 )
 

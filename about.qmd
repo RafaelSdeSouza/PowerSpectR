@@ -33,8 +33,8 @@ PowerSpectR currently assumes:
 
 That makes it especially useful as a compact exploratory tool or a reproducible
 starting point before moving to a more elaborate spectral pipeline. The current
-website examples use a real galaxy cutout to keep the presentation close to the
-astronomical use case.
+website examples use an official JWST image of NGC 628 to keep the presentation
+close to the astronomical use case.
 
 ## Contact
 
