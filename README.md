@@ -39,7 +39,7 @@ library(PowerSpectR)
 
 img_path <- system.file(
   "extdata",
-  "example_jwst_ngc628.png",
+  "example_spiral.png",
   package = "PowerSpectR"
 )
 
