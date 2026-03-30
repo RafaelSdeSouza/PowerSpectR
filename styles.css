@@ -179,20 +179,36 @@ a {
   margin-bottom: 0;
 }
 
-.comparison-source img {
+.comparison-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  align-items: start;
+  margin-bottom: 0.9rem;
+}
+
+.comparison-row p {
+  margin: 0;
+}
+
+.comparison-source img,
+.comparison-plot img {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+  max-width: 100%;
   border-radius: 0.75rem;
   border: 1px solid rgba(15, 76, 92, 0.12);
   background: #fff;
 }
 
+.comparison-source img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
 .comparison-plot img {
-  width: 100%;
-  border-radius: 0.75rem;
-  border: 1px solid rgba(15, 76, 92, 0.12);
-  background: #fff;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  padding: 0.2rem;
 }
 
 blockquote {
@@ -229,6 +245,10 @@ code {
   .function-grid,
   .figure-grid,
   .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison-row {
     grid-template-columns: 1fr;
   }
 }

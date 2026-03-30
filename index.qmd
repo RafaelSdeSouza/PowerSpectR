@@ -103,9 +103,11 @@ show how the radial power spectra can differ for very different morphologies.
 ::: {.comparison-card}
 ### Spiral Example: NGC 628
 
+::: {.comparison-row}
 ![Cropped JWST view of the spiral galaxy NGC 628.](images/example_spiral.png){.comparison-source}
 
 ![Power spectrum generated from the spiral example.](images/example_spiral_power_spectrum.png){.comparison-plot}
+:::
 
 In this example pair, the spiral image produces a steeper fitted slope
 (`beta ≈ -4.15`), consistent with stronger filamentary structure across a range
@@ -115,9 +117,11 @@ of scales.
 ::: {.comparison-card}
 ### Elliptical Example: M60
 
+::: {.comparison-row}
 ![Cropped Hubble view of the elliptical galaxy M60.](images/example_elliptical.jpg){.comparison-source}
 
 ![Power spectrum generated from the elliptical example.](images/example_elliptical_power_spectrum.png){.comparison-plot}
+:::
 
 The elliptical example is smoother and more centrally concentrated, with a
 flatter fitted slope (`beta ≈ -2.41`) in this specific crop.
