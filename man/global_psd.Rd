@@ -42,7 +42,7 @@ power spectrum, and fits a power law of the form
 \eqn{\log P = \alpha + \beta \log k}.
 }
 \examples{
-img_path <- system.file("extdata", "example_jwst_ngc628.png", package = "PowerSpectR")
+img_path <- system.file("extdata", "example_spiral.png", package = "PowerSpectR")
 res <- global_psd(img_path, nbins = 48, drop_bins = 2, window = "hann", quiet = TRUE)
 str(res)
 }
