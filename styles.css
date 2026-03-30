@@ -181,10 +181,10 @@ a {
 
 .comparison-row {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
   gap: 0.85rem;
   align-items: start;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.6rem;
 }
 
 .comparison-row p {
@@ -206,9 +206,9 @@ a {
 }
 
 .comparison-plot img {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1.18 / 1;
   object-fit: contain;
-  padding: 0.2rem;
+  padding: 0.1rem;
 }
 
 blockquote {
