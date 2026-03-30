@@ -2,8 +2,14 @@
 #' @param M numeric matrix
 #' @return matrix with quadrants swapped
 #' @export
-fftshift_matrix <- function(M){
-  h <- nrow(M); w <- ncol(M)
+fftshift_matrix <- function(M) {
+  if (!is.matrix(M)) {
+    stop("`M` must be a matrix.", call. = FALSE)
+  }
+
+  h <- nrow(M)
+  w <- ncol(M)
+
   M[c((h%/%2+1):h, 1:(h%/%2)),
     c((w%/%2+1):w, 1:(w%/%2))]
 }

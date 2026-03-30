@@ -11,23 +11,25 @@ Authors@R: c(
       comment = c(ORCID = "0000-0001-7207-4584")
     )
   )
+Author: Rafael S. de Souza [aut]
+Maintainer: Rafael S. de Souza <rd23aag@herts.ac.uk>
 Description: 
     Tools for computing and visualizing robust, azimuthally medianized 
     Fourier power spectra from 2-D images. The package supports log- or 
     linearly spaced k-space binning, multiple window functions, and 
     reproducible slope fitting for scale-free structures, suitable for 
     both astronomical and remote-sensing image analysis.
+URL: https://github.com/RafaelSdeSouza/PowerSpectR
+BugReports: https://github.com/RafaelSdeSouza/PowerSpectR/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 4.2)
 Imports:
     imager,
-    dplyr,
     ggplot2,
     tibble,
-    cowplot,
-    scales
+    cowplot
 Suggests:
     knitr,
     rmarkdown,

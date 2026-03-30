@@ -1,56 +1,75 @@
-# PowerSpectR <img src="man/figures/logo_ps.png" align="right" width="120"/>
+# PowerSpectR <img src="man/figures/logo_ps.png" align="right" width="140" alt="PowerSpectR logo"/>
 
-**Author:** Rafael S. de Souza  
-**Email:** [rd23aag@herts.ac.uk](mailto:rd23aag@herts.ac.uk)  
-**Affiliation:** University of Hertfordshire — Cosmostatistics Initiative (COIN)
+Robust, median-based Fourier power-spectrum analysis for 2-D images in R.
 
----
+## Website
+
+The repository now includes a Quarto website in the same visual family as
+`sagui`. Render it locally with:
+
+```r
+quarto::quarto_render()
+```
+
+or from the shell with `quarto render`.
 
 ## Overview
 
-**PowerSpectR** is an R package for computing and visualizing **robust, median-based Fourier power spectra** from 2-D images.
+**PowerSpectR** computes azimuthally medianized 1-D power spectra from 2-D
+images, then fits a power-law slope on log-log axes. The focus is a clean,
+reproducible workflow that is more robust to bright outliers, masking
+artifacts, and localized structure than a simple azimuthal mean.
 
-It provides a simple, reproducible workflow for estimating power-law slopes of spatial structures (e.g. turbulence, galactic morphology, or agricultural texture patterns) using **azimuthally medianized spectra** rather than simple means — improving robustness to outliers, masking artifacts, and bright point sources.
+Current package capabilities include:
 
-The package is inspired by techniques used in modern astronomical image analysis, including *TurbuStat*, but written natively in R with a clean and modular API.
-
----
-
-## Key Features
-
-- 🔹 2-D FFT → 1-D **azimuthal median** or quantile power spectrum  
-- 🔹 **Log- or linear-spaced** radial bins in k-space  
-- 🔹 Multiple **window functions** (Hann, Blackman, none)  
-- 🔹 **Power-law slope fitting** on log–log scales with robust regression  
-- 🔹 Optional **image inset** and publication-ready `ggplot2` output  
-- 🔹 Seamless integration with FITS, TIFF, PNG, or matrix input
-
----
+- grayscale image loading through `imager`
+- optional 2-D windowing with `"hann"`, `"blackman"`, or `"none"`
+- FFT shifting and radial median statistics
+- power-law fitting in log space
+- publication-friendly plotting with an optional inset image
 
 ## Installation
 
 ```r
-# install directly from GitHub
-if (!requireNamespace("remotes")) install.packages("remotes")
+if (!requireNamespace("remotes", quietly = TRUE)) {
+  install.packages("remotes")
+}
+
 remotes::install_github("RafaelSdeSouza/PowerSpectR")
+library(PowerSpectR)
+```
+
+## Minimal Example
 
 ```r
 library(PowerSpectR)
 
-# Example: compute and plot a power spectrum from an image file
-result <- ps_run("example_image.png",
-                 window = "hann",
-                 nbins = 72,
-                 binning = "log",
-                 reducer = "median",
-                 drop_bins = 1)
+img_path <- system.file(
+  "extdata",
+  "example_texture.png",
+  package = "PowerSpectR"
+)
 
-# Access slope and profile
-result$slope
-head(result$profile)
+res <- global_psd(
+  img_path,
+  nbins = 72,
+  drop_bins = 2,
+  window = "hann"
+)
 
-# Standalone plot (with optional inset)
-plot_power_spectrum(result, inset_path = "example_image.png")
+res$slope
+head(res$data)
 
+plot_power_spectrum(res, inset_path = img_path)
+```
+
+## Core Functions
+
+- `read_gray_matrix()` reads a grayscale image into a numeric matrix.
+- `hann2d()` generates a 2-D window for tapering image edges before the FFT.
+- `fftshift_matrix()` centers the zero-frequency component.
+- `radial_stats_median()` computes the azimuthal median in radial bins.
+- `global_psd()` runs the full power-spectrum workflow and slope fit.
+- `plot_power_spectrum()` visualizes the fitted profile.
 
 

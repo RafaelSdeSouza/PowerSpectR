@@ -15,17 +15,28 @@
 #' }
 #'
 #' @export
-radial_stats_median <- function(P, nbins = 72){
-  h <- nrow(P); w <- ncol(P)
-  Psh <- fftshift_matrix(P)
-  cy <- floor(h/2); cx <- floor(w/2)
-  yy <- matrix(rep(0:(h-1), w), nrow = h)
-  xx <- matrix(rep(0:(w-1), each = h), nrow = h)
-  r  <- as.vector(sqrt((yy - cy)^2 + (xx - cx)^2))
+radial_stats_median <- function(P, nbins = 72) {
+  if (!is.matrix(P)) {
+    stop("`P` must be a matrix.", call. = FALSE)
+  }
+
+  if (!is.numeric(nbins) || length(nbins) != 1 || is.na(nbins) || nbins < 1) {
+    stop("`nbins` must be a single integer greater than or equal to 1.", call. = FALSE)
+  }
+
+  h <- nrow(P)
+  w <- ncol(P)
+  p_shifted <- fftshift_matrix(P)
+  cy <- floor(h / 2)
+  cx <- floor(w / 2)
+  yy <- row(p_shifted) - 1
+  xx <- col(p_shifted) - 1
+  r <- as.vector(sqrt((yy - cy)^2 + (xx - cx)^2))
   rmax <- max(r)
-  brk <- seq(0, rmax, length.out = nbins + 1)
+  brk <- seq(0, rmax, length.out = as.integer(nbins) + 1)
   bin <- cut(r, brk, labels = FALSE, include.lowest = TRUE)
-  v   <- tapply(as.vector(Psh), bin, median, na.rm = TRUE)
-  f   <- (head(brk, -1) + tail(brk, -1))/2
-  tibble(f = f[!is.na(v)], psd = v[!is.na(v)])
+  v <- tapply(as.vector(p_shifted), bin, median, na.rm = TRUE)
+  f <- (head(brk, -1) + tail(brk, -1)) / 2
+
+  tibble::tibble(f = f[!is.na(v)], psd = v[!is.na(v)])
 }

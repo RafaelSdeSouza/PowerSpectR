@@ -1,0 +1,9 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.quarto$
+^_quarto\.yml$
+^about\.qmd$
+^index\.qmd$
+^styles\.css$
+^images$
+^_site$

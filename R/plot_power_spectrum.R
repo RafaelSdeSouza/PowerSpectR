@@ -1,0 +1,58 @@
+#' Plot a fitted radial power spectrum
+#'
+#' @param ps_obj A list returned by [global_psd()].
+#' @param inset_path Optional path to an image shown as an inset.
+#' @param show_fit Logical. If `TRUE`, overlay the fitted power-law line.
+#'
+#' @return Invisibly returns a `ggplot` object, or a composed `cowplot` object
+#'   when `inset_path` is supplied.
+#' @export
+plot_power_spectrum <- function(ps_obj, inset_path = NULL, show_fit = TRUE) {
+  stopifnot(is.list(ps_obj))
+  rs <- ps_obj$data
+  alpha <- ps_obj$alpha
+  slope <- ps_obj$slope
+  fname <- ps_obj$file
+
+  # Prepare log10 data
+  alpha10 <- alpha / log(10)
+  rs_log <- transform(rs, lx = log10(f), ly = log10(psd))
+  rs_log <- rs_log[order(rs_log$lx), , drop = FALSE]
+
+  # Main plot
+  p <- ggplot2::ggplot(rs_log, ggplot2::aes(lx, ly)) +
+    ggplot2::geom_line(color = "#0f4c5c", linewidth = 0.9, alpha = 0.9) +
+    ggplot2::geom_point(size = 2.2, shape = 21, fill = "#d7a34d", color = "#19323c", stroke = 0.35) +
+    ggplot2::labs(
+      x = expression(log[10]~k~(pix^{-1})),
+      y = expression(log[10]~P(k)),
+      title = "Radial power spectrum",
+      subtitle = sprintf("%s | fitted slope beta = %.2f", fname, slope)
+    ) +
+    ggplot2::theme_minimal(base_size = 13) +
+    ggplot2::theme(
+      plot.title.position = "plot",
+      panel.grid.minor = ggplot2::element_blank()
+    )
+
+  # Add straight power-law line if desired
+  if (isTRUE(show_fit)) {
+    p <- p +
+      ggplot2::geom_abline(intercept = alpha10, slope = slope,
+                           color = "#b23a48", linewidth = 1, linetype = 2)
+  }
+
+  # Optional inset image
+  if (!is.null(inset_path) && requireNamespace("cowplot", quietly = TRUE)) {
+    p_final <- cowplot::ggdraw() +
+      cowplot::draw_plot(p) +
+      cowplot::draw_image(inset_path,
+                          x = 0.10, y = 0.10, width = 0.40, height = 0.40,
+                          hjust = 0, vjust = 0)
+    print(p_final)
+    invisible(p_final)
+  } else {
+    print(p)
+    invisible(p)
+  }
+}
