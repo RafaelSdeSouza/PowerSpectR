@@ -17,7 +17,7 @@ title: ""
   <div class="hero-brand-logos">
     <img class="hero-logo" src="man/figures/logo_ps.png" alt="PowerSpectR logo" />
     <div class="hero-affiliation">
-      <span>Built for astronomy, remote sensing, and texture analysis.</span>
+      <span> Applications to astronomy, remote sensing, and texture analysis.</span>
     </div>
   </div>
 </div>
