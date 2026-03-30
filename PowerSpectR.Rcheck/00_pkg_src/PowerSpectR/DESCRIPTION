@@ -24,14 +24,10 @@ BugReports: https://github.com/RafaelSdeSouza/PowerSpectR/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 4.2)
-Imports:
-    imager,
-    ggplot2,
-    tibble
-Suggests:
-    cowplot,
-    magick,
-    testthat (>= 3.0.0)
+Imports: imager, ggplot2, tibble
+Suggests: cowplot, magick, testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
+NeedsCompilation: no
+Packaged: 2026-03-30 12:28:19 UTC; rd23aag

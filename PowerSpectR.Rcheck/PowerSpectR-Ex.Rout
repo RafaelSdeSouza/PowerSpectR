@@ -1,0 +1,69 @@
+
+R version 4.5.2 (2025-10-31) -- "[Not] Part in a Rumble"
+Copyright (C) 2025 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin20
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "PowerSpectR"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('PowerSpectR')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("global_psd")
+> ### * global_psd
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: global_psd
+> ### Title: Compute a global radial power spectrum from an image
+> ### Aliases: global_psd
+> 
+> ### ** Examples
+> 
+> img_path <- system.file("extdata", "example_texture.png", package = "PowerSpectR")
+> res <- global_psd(img_path, nbins = 48, drop_bins = 2, window = "hann", quiet = TRUE)
+> str(res)
+List of 5
+ $ data  : tibble [46 × 2] (S3: tbl_df/tbl/data.frame)
+  ..$ f  : num [1:46] 26.5 37.1 47.7 58.3 68.9 ...
+  ..$ psd: num [1:46(1d)] 3.3 2.25 2.09 1.68 1.45 ...
+  .. ..- attr(*, "dimnames")=List of 1
+  .. .. ..$ : chr [1:46] "3" "4" "5" "6" ...
+ $ alpha : num 11.5
+ $ slope : num -2.63
+ $ file  : chr "example_texture.png"
+ $ window: chr "hann"
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  0.344 0.044 0.392 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

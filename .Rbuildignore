@@ -7,3 +7,10 @@
 ^styles\.css$
 ^images$
 ^_site$
+^docs$
+^\.DS_Store$
+^man/\.DS_Store$
+^\.Rhistory$
+^\.RDataTmp$
+^\.gitignore$
+^\.\.Rcheck$
