@@ -32,7 +32,9 @@ PowerSpectR currently assumes:
 - a simple linear fit in log space for the slope estimate
 
 That makes it especially useful as a compact exploratory tool or a reproducible
-starting point before moving to a more elaborate spectral pipeline.
+starting point before moving to a more elaborate spectral pipeline. The current
+website examples use a real galaxy cutout to keep the presentation close to the
+astronomical use case.
 
 ## Contact
 

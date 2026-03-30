@@ -23,8 +23,8 @@
 #' }
 #'
 #' @examples
-#' img_path <- system.file("extdata", "example_texture.png", package = "PowerSpectR")
-#' res <- global_psd(img_path, nbins = 48, drop_bins = 2, window = "hann", quiet = TRUE)
+#' img_path <- system.file("extdata", "example_galaxy.png", package = "PowerSpectR")
+#' res <- global_psd(img_path, nbins = 24, drop_bins = 1, window = "hann", quiet = TRUE)
 #' str(res)
 #' @export
 global_psd <- function(
