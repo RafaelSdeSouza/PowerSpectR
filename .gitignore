@@ -6,3 +6,6 @@
 .RDataTmp
 ..Rcheck
 .quarto
+
+/.quarto/
+**/*.quarto_ipynb

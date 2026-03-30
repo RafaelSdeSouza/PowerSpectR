@@ -1,0 +1,107 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "PowerSpectR",
+    "section": "",
+    "text": "PowerSpectR is a lightweight R package for estimating radial power spectra from 2-D images with a median-based summary in Fourier space.\nThe current implementation is intentionally compact:\n\nimages are loaded with imager\ntapering is handled with hann2d()\nthe centered 2-D power image is reduced with radial_stats_median()\nglobal_psd() fits a simple log-log slope\nplot_power_spectrum() renders the result"
+  },
+  {
+    "objectID": "about.html#about-powerspectr",
+    "href": "about.html#about-powerspectr",
+    "title": "PowerSpectR",
+    "section": "",
+    "text": "PowerSpectR is a lightweight R package for estimating radial power spectra from 2-D images with a median-based summary in Fourier space.\nThe current implementation is intentionally compact:\n\nimages are loaded with imager\ntapering is handled with hann2d()\nthe centered 2-D power image is reduced with radial_stats_median()\nglobal_psd() fits a simple log-log slope\nplot_power_spectrum() renders the result"
+  },
+  {
+    "objectID": "about.html#method-summary",
+    "href": "about.html#method-summary",
+    "title": "PowerSpectR",
+    "section": "Method Summary",
+    "text": "Method Summary\nThe package follows a straightforward analysis path:\n\nConvert the image to grayscale.\nRemove the DC component by subtracting the mean.\nApply a 2-D taper to soften edge discontinuities before the FFT.\nCompute the squared Fourier amplitude.\nFFT-shift the power image into a centered frame.\nCollapse annuli with the median to get a robust radial profile.\nFit a power law after dropping the lowest-frequency bins if needed."
+  },
+  {
+    "objectID": "about.html#notes",
+    "href": "about.html#notes",
+    "title": "PowerSpectR",
+    "section": "Notes",
+    "text": "Notes\nPowerSpectR currently assumes:\n\n2-D image inputs\nradial bins that are linearly spaced in pixel radius\na simple linear fit in log space for the slope estimate\n\nThat makes it especially useful as a compact exploratory tool or a reproducible starting point before moving to a more elaborate spectral pipeline."
+  },
+  {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "PowerSpectR",
+    "section": "Contact",
+    "text": "Contact\nRafael S. de Souza\nrd23aag@herts.ac.uk"
+  },
+  {
+    "objectID": "LICENSE.html",
+    "href": "LICENSE.html",
+    "title": "PowerSpectR",
+    "section": "",
+    "text": "MIT License\nCopyright (c) 2025 Rafael S. de Souza\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PowerSpectR",
+    "section": "",
+    "text": "COIN Toolbox\n    PowerSpectR\n    Robust, median-based Fourier power-spectrum analysis for 2-D images.\n    \n      Install\n      Quick Start\n      GitHub\n    \n  \n  \n    \n    \n      Built for astronomy, remote sensing, and texture analysis."
+  },
+  {
+    "objectID": "index.html#what-it-does",
+    "href": "index.html#what-it-does",
+    "title": "PowerSpectR",
+    "section": "What It Does",
+    "text": "What It Does\nPowerSpectR turns a 2-D image into a robust 1-D radial power spectrum:\n\nread an image and convert it to grayscale\napply an optional taper to reduce FFT edge artifacts\nshift the Fourier power image to the centered frequency frame\nsummarize concentric annuli with the median, not the mean\nfit a power-law slope on log-log axes\nvisualize the result with a publication-ready plot"
+  },
+  {
+    "objectID": "index.html#why-medianized-spectra",
+    "href": "index.html#why-medianized-spectra",
+    "title": "PowerSpectR",
+    "section": "Why Medianized Spectra",
+    "text": "Why Medianized Spectra\nThe median radial profile is often more stable than a plain azimuthal mean when an image contains compact bright sources, masking scars, or a few localized structures that would otherwise dominate the spectrum.\n\n\nRobust to outliers\nMedian annuli reduce the influence of bright point-like features and isolated artifacts in Fourier space.\n\n\nMinimal workflow\nThe package exposes a short, readable function chain that stays close to the underlying spectral method.\n\n\nReady to plot\nYou can compute the spectrum and render the fitted slope in just a few lines of R."
+  },
+  {
+    "objectID": "index.html#quick-start",
+    "href": "index.html#quick-start",
+    "title": "PowerSpectR",
+    "section": "Quick Start",
+    "text": "Quick Start\nlibrary(PowerSpectR)\n\nimg_path &lt;- system.file(\n  \"extdata\",\n  \"example_texture.png\",\n  package = \"PowerSpectR\"\n)\n\nres &lt;- global_psd(\n  img_path,\n  nbins = 72,\n  drop_bins = 2,\n  window = \"hann\"\n)\n\nplot_power_spectrum(res)"
+  },
+  {
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
+    "title": "PowerSpectR",
+    "section": "Installation",
+    "text": "Installation\nInstall from GitHub:\ninstall.packages(\"remotes\")\nremotes::install_github(\"RafaelSdeSouza/PowerSpectR\")\nlibrary(PowerSpectR)"
+  },
+  {
+    "objectID": "index.html#example-gallery",
+    "href": "index.html#example-gallery",
+    "title": "PowerSpectR",
+    "section": "Example Gallery",
+    "text": "Example Gallery\nThese example assets are generated from a synthetic texture included with the package website.\n\n\n\n\n\nSynthetic grayscale texture used as the example input.\n\n\nSynthetic input texture with mixed smooth structure and periodic features.\n\n\n\n\n\nMedian radial power spectrum generated by PowerSpectR.\n\n\nFitted radial power spectrum generated directly from the synthetic example."
+  },
+  {
+    "objectID": "index.html#core-functions",
+    "href": "index.html#core-functions",
+    "title": "PowerSpectR",
+    "section": "Core Functions",
+    "text": "Core Functions\n\n\nread_gray_matrix()\nLoad a grayscale image into a numeric matrix for downstream analysis.\n\n\nhann2d()\nCreate a 2-D \"hann\", \"blackman\", or \"none\" taper before the FFT.\n\n\nfftshift_matrix()\nMove the zero-frequency component to the center of the Fourier image.\n\n\nradial_stats_median()\nAggregate the centered power image in radial bins using the median.\n\n\nglobal_psd()\nRun the full spectrum workflow and estimate the fitted slope.\n\n\nplot_power_spectrum()\nPlot the log-log profile and optionally overlay the image as an inset."
+  },
+  {
+    "objectID": "index.html#where-it-fits",
+    "href": "index.html#where-it-fits",
+    "title": "PowerSpectR",
+    "section": "Where It Fits",
+    "text": "Where It Fits\nPowerSpectR is a good fit when you want a compact spectral summary of spatial structure in:\n\nastronomical imaging\nremote-sensing texture analysis\nmicroscopy or materials imaging\nsimulated data products where scale-free structure matters"
+  },
+  {
+    "objectID": "index.html#references",
+    "href": "index.html#references",
+    "title": "PowerSpectR",
+    "section": "References",
+    "text": "References\n\nElson, R. A. W., Fall, S. M., and Freeman, K. C. (1989). The power spectrum of structure in irregular galaxies. The Astrophysical Journal, 336, 734-754.\nLazarian, A. and Pogosyan, D. (2000). Velocity modification of turbulence spectra observed in spectral lines. The Astrophysical Journal, 537(2), 720-748.\nStarck, J.-L., Murtagh, F., and Fadili, J. (2015). Sparse Image and Signal Processing. Cambridge University Press."
+  }
+]
