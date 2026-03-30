@@ -12,7 +12,6 @@ plot_power_spectrum <- function(ps_obj, inset_path = NULL, show_fit = TRUE) {
   rs <- ps_obj$data
   alpha <- ps_obj$alpha
   slope <- ps_obj$slope
-  fname <- ps_obj$file
 
   # Prepare log10 data
   alpha10 <- alpha / log(10)
@@ -21,25 +20,21 @@ plot_power_spectrum <- function(ps_obj, inset_path = NULL, show_fit = TRUE) {
 
   # Main plot
   p <- ggplot2::ggplot(rs_log, ggplot2::aes(lx, ly)) +
-    ggplot2::geom_line(color = "#0f4c5c", linewidth = 0.9, alpha = 0.9) +
-    ggplot2::geom_point(size = 2.2, shape = 21, fill = "#d7a34d", color = "#19323c", stroke = 0.35) +
+    ggplot2::geom_point(size = 2, shape = 21, fill = "orange") +
+    ggplot2::geom_smooth(fill = "red3", alpha = 0.5, color = "black", se = TRUE) +
     ggplot2::labs(
       x = expression(log[10]~k~(pix^{-1})),
       y = expression(log[10]~P(k)),
-      title = "Radial power spectrum",
-      subtitle = sprintf("%s | fitted slope beta = %.2f", fname, slope)
+      title = "Radial power spectrum (log–log)",
+      subtitle = sprintf("%s slope β = %.2f", "", slope)
     ) +
-    ggplot2::theme_minimal(base_size = 13) +
-    ggplot2::theme(
-      plot.title.position = "plot",
-      panel.grid.minor = ggplot2::element_blank()
-    )
+    ggplot2::theme_minimal(base_size = 13)
 
   # Add straight power-law line if desired
   if (isTRUE(show_fit)) {
     p <- p +
       ggplot2::geom_abline(intercept = alpha10, slope = slope,
-                           color = "#b23a48", linewidth = 1, linetype = 2)
+                           color = "red", linewidth = 1, linetype = 2)
   }
 
   # Optional inset image
