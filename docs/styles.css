@@ -160,6 +160,41 @@ a {
   background: #fff;
 }
 
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 1.5rem 0;
+}
+
+.comparison-card {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(15, 76, 92, 0.12);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 10px 24px rgba(15, 76, 92, 0.06);
+}
+
+.comparison-card p:last-child {
+  margin-bottom: 0;
+}
+
+.comparison-source img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(15, 76, 92, 0.12);
+  background: #fff;
+}
+
+.comparison-plot img {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(15, 76, 92, 0.12);
+  background: #fff;
+}
+
 blockquote {
   border-left: 4px solid var(--ps-gold);
   background: rgba(200, 155, 60, 0.08);
@@ -192,7 +227,8 @@ code {
   }
 
   .function-grid,
-  .figure-grid {
+  .figure-grid,
+  .comparison-grid {
     grid-template-columns: 1fr;
   }
 }
