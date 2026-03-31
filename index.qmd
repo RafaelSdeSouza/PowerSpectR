@@ -23,7 +23,7 @@ title: ""
 </div>
 ```
 
-## What It Does
+## General features
 
 **PowerSpectR** turns a 2-D image into a robust 1-D radial power spectrum:
 
@@ -34,7 +34,7 @@ title: ""
 - fit a power-law slope on log-log axes
 - visualize the result with a publication-ready plot
 
-## Why Medianized Spectra
+## Medianized Spectra
 
 The median radial profile is often more stable than a plain azimuthal mean when
 an image contains compact bright sources, masking scars, or a few localized
@@ -56,7 +56,7 @@ The package exposes a short, readable function chain that stays close to the
 :::
 
 ::: {.g-col-12 .g-col-md-4}
-### Ready to plot
+### How to plot
 
 You can compute the spectrum and render the fitted slope in just a few lines of
  R.
@@ -174,7 +174,7 @@ Plot the log-log profile and optionally overlay the image as an inset.
 :::
 :::
 
-## Where It Fits
+## Applications
 
 PowerSpectR is a good fit when you want a compact spectral summary of spatial
 structure in:
