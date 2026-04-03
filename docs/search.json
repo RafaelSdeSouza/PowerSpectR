@@ -46,7 +46,7 @@
     "href": "index.html",
     "title": "PowerSpectR",
     "section": "",
-    "text": "R package by Rafael S. de Souza\n    PowerSpectR\n    Robust, median-based Fourier power-spectrum analysis for 2-D images.\n    \n      Install\n      Quick Start\n      GitHub\n    \n  \n  \n    \n    \n       Applications to astronomy, remote sensing, and texture analysis."
+    "text": "R package by Rafael S. de Souza\n    PowerSpectR: An R Package for Radial Power Spectrum Estimation\n    Median-based Fourier power-spectrum analysis for 2-D images in astronomy and beyond.\n    \n      Install\n      Quick Start\n      GitHub\n    \n  \n  \n    \n    \n       Applications to astronomy, remote sensing, and texture analysis."
   },
   {
     "objectID": "index.html#general-features",
