@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use PowerSpectR, please cite the software release archived on Zenodo and the associated RNAAS article."
+title: "PowerSpectR: Robust Median-Based Power Spectrum Analysis for Images"
+type: software
+authors:
+  - family-names: "de Souza"
+    given-names: "Rafael S."
+    orcid: "https://orcid.org/0000-0001-7207-4584"
+    affiliation: "University of Hertfordshire"
+identifiers:
+  - type: url
+    value: "https://github.com/RafaelSdeSouza/PowerSpectR"
+repository-code: "https://github.com/RafaelSdeSouza/PowerSpectR"
+license: "MIT"
+version: "0.1.0"
+abstract: >-
+  PowerSpectR is an R package for robust, median-based Fourier power-spectrum
+  analysis of 2-D images. The package provides grayscale image loading,
+  optional edge tapering, FFT shifting, radial median statistics, and fitted
+  log-log slope estimation for scale-free spatial structure in astronomical
+  and remote-sensing image analysis.
+keywords:
+  - astronomy
+  - astrostatistics
+  - R
+  - image analysis
+  - power spectrum
+  - Fourier analysis
+  - morphology

@@ -6,6 +6,13 @@ Robust, median-based Fourier power-spectrum analysis for 2-D images in R.
 
 [PowerSpectR documentation](https://rafaelsdesouza.github.io/PowerSpectR/)
 
+## Citation
+
+Use the archived Zenodo software release for the package citation and the
+associated RNAAS note for the short paper. The repository now includes
+[`CITATION.cff`](CITATION.cff) and [`inst/CITATION`](inst/CITATION) metadata to
+support that workflow.
+
 ## Overview
 
 **PowerSpectR** computes azimuthally medianized 1-D power spectra from 2-D
